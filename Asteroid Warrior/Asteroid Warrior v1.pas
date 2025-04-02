@@ -1,5 +1,6 @@
 ﻿uses wpfobjects, sounds, gameunit;
-
+//Код в процессе перехода к ООП
+//Код не оптимизирован
 var k:=0.9;
 var ShipAcceleration:= 0.8;
 var gamedir:=GetCurrentDir;
@@ -16,7 +17,6 @@ var gameovermusic:=new sound(gamedir+'\src\music\gameover2.mp3');
 var blast1 := new sound(gamedir+'\src\sounds\blaster.mp3');
 var Expl := new sound(gamedir+'\src\sounds\explosive.mp3');//
 var Player, Background: GameObjT;
-//var ThrustVector: LineWPF;
 var SpeedVector :SpeedVectorT;
 
 procedure randomost;
@@ -42,7 +42,7 @@ begin
     Asteroids.RemoveAll(t -> true);
 end;
 
-procedure init();
+procedure init;
 begin
   (ku,kd,kl,kr,kf) := (false,false,false,false,false);
   shots.Clear;
@@ -57,7 +57,7 @@ begin
   gameoverbox.Visible:=false;
   newgamebox:=new RoundRectWPF(window.Width / 2-250, window.Height / 2 + 150, 500, 60,10, colors.green);
   newgamebox.TextAlignment := alignment.Center;
-  newgamebox.Text := 'Нажми ENTER чтобы начать';//пишем game over
+  newgamebox.Text := 'Нажми ENTER чтобы начать';
   newgamebox.FontSize := 36;
   newgamebox.Visible:=false;
   player := new PictureWPF(window.Width / 4, window.Height / 2, 'src\images\ship.png');//игрок
@@ -66,9 +66,9 @@ begin
   player.Dx:=0;
   player.Dy:=0;
   GameSpeed:=15;
-  asteroidslimit:=5;
+  asteroidslimit:=8;
   DebrisLimit:=5;
-  background.Dx := -4;
+  background.Dx := -2;
   score := 0;    //счёт игры
   ShotsLimit := 3;//
   ShotCD := 100;   //
@@ -224,7 +224,7 @@ begin
       key.right: kr := true;
       key.Space: kf := true;
       key.N: N1L := not N1L;
-      key.F12: if cheat then cheat := false else cheat := true;
+      key.F12: cheat := not cheat;
       key.F11: MaxAsteroidRadius := 10;
       key.PageUp: AsteroidsLimit += 1;
       key.PageDown: AsteroidsLimit -= 1;
