@@ -23,8 +23,8 @@ procedure randomost;
 begin
   case random(3) of
     0:ost:=new sound(gamedir+'\src\music\soundtrack1.mp3');
-    1:ost:=new sound(gamedir+'\src\music\Carpenter Brut - Meet Matt Stryker.mp3');
-    2:ost:=new sound(gamedir+'\src\music\Carpenter Brut - Run, Sally, Run!.mp3');
+    1:ost:=new sound(gamedir+'\src\music\soundtrack2.mp3');
+    2:ost:=new sound(gamedir+'\src\music\soundtrack3.mp3');
   end;
 end;
 
